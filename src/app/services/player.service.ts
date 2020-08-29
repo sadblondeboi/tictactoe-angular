@@ -40,14 +40,4 @@ export class PlayerService {
     public getPlayers(): Observable<Player[]> {
         return this.http.get<Player[]>(this.playersUrl);
     }
-
-
-
-    public addPoint(player: Player): void {
-        player.score += 1;
-    }
-
-    public resetPoints(player: Player): void {
-        player.score = 0;
-    }
 }
