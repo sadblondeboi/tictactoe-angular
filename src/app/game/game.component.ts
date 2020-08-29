@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardComponent } from '../board/board.component';
-import { StatsComponent } from '../stats/stats.component';
+
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-game',
@@ -8,10 +8,16 @@ import { StatsComponent } from '../stats/stats.component';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  
-  constructor() { }
-  
+  public players
+
+  public constructor(private playerService: PlayerService) { }
+
   ngOnInit(): void {
+    this.playerService.getPlayersIDs();
   }
 
+  getPlayers(): void {
+    this.playerService.getPlayers()
+      .subscribe(players => console.log(players));
+  }
 }
