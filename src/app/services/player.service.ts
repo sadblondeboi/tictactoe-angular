@@ -12,6 +12,14 @@ import { Player } from '../models/player';
 
 export class PlayerService {
     private playersUrl = 'http://localhost:3000/players';
+    public player1: Player = {
+        id: '',
+        score: 0
+      };
+      public player2: Player = {
+        id: '',
+        score: 0
+      };
 
     public constructor(private http: HttpClient) { }
 
@@ -39,5 +47,10 @@ export class PlayerService {
 
     public getPlayers(): Observable<Player[]> {
         return this.http.get<Player[]>(this.playersUrl);
+    }
+
+    setupPlayers(players: Player[]): void {
+        this.player1 = players[0];
+        this.player2 = players[1];
     }
 }

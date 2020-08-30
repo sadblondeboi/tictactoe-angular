@@ -1,7 +1,7 @@
 <div class="board">
     <div class="tile" 
-    *ngFor="let tile of tiles"
-    (click)="clickButton(tile.key)">
-        {{tile.key}}
+    *ngFor="let tile of tiles; index as i"
+    (click)="clickButton(i)">
+        {{tile}}
     </div>
 </div>

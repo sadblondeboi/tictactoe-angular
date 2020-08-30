@@ -1,4 +1,5 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter, Input } from '@angular/core';
+import { GameState } from '../services/game.service';
 
 @Component({
   selector: 'app-board',
@@ -10,17 +11,8 @@ export class BoardComponent implements OnInit {
   @Output()
   buttonClicked: EventEmitter<string> = new EventEmitter<string>();
 
-  public tiles = [
-    {key: '0', value: 'empty'},
-    {key: '1', value: 'empty'},
-    {key: '2', value: 'empty'},
-    {key: '3', value: 'empty'},
-    {key: '4', value: 'empty'},
-    {key: '5', value: 'empty'},
-    {key: '6', value: 'empty'},
-    {key: '7', value: 'empty'},
-    {key: '8', value: 'empty'},
-  ];
+  @Input()
+  public tiles: GameState[];
 
   constructor() { }
 

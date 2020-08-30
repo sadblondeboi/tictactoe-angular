@@ -1,4 +1,3 @@
 <p>game works!</p>
-<app-board (buttonClicked)="parentEventHandlerFunction($event)"></app-board>
-<span>value emitted from child component is: </span> {{valueEmittedFromChildComponent}}
+<app-board [tiles]="tiles" (buttonClicked)="parentEventHandlerFunction($event)"></app-board>
 <app-stats></app-stats>
