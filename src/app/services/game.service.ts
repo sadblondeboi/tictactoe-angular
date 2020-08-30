@@ -21,12 +21,21 @@ export class GameService {
     round: 1
   };
 
+  private players: { player1?: Player, player2?: Player } = { player1: undefined, player2: undefined };
+
   public tiles: GameState[] = new Array(9).fill(GameState.None);
   winConditions: number[][] = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]
   ];
 
-  public constructor(private playerService: PlayerService) { }
+  public constructor(private playerService: PlayerService) {
+
+  }
+
+  public setUpPlayers(): void {
+    this.playerService.player1.subscribe(player => this.players.player1 = player);
+    this.playerService.player2.subscribe(player => this.players.player2 = player);
+  }
 
   public changeActivePlayer(): void {
     if (this.activePlayer !== GameState.None) {
@@ -39,7 +48,7 @@ export class GameService {
   }
 
   public getActiveModel(): Player {
-    const player = this.activePlayer === GameState.Player1 ? this.playerService.player1 : this.playerService.player2;
+    const player = this.activePlayer === GameState.Player1 ? this.players.player1 : this.players.player2;
     return player;
   }
 
@@ -58,7 +67,7 @@ export class GameService {
     if (this.checkWin(this.activePlayer, this.tiles)) {
       console.log(this.activePlayer + ' won.');
       this.nextRound();
-    } else if (this.checkDraw()){
+    } else if (this.checkDraw()) {
       console.log('draw');
       this.nextRound();
     }
@@ -69,7 +78,6 @@ export class GameService {
   private nextRound(): void {
     // this.activePlayer.score += 1;
     this.game.round += 1;
-    console.log(this.game.round);
     this.playerService.setPlayerScore(this.getActivePlayer(), this.getActiveModel().score);
     this.tiles.fill(GameState.None);
   }
@@ -81,9 +89,7 @@ export class GameService {
         win += +(tiles[z] === player);
       }
       if (win === 3) {
-        console.log(this.getActiveModel());
         this.getActiveModel().score += 1;
-        console.log(this.getActiveModel());
         return true;
       }
     }

@@ -1,8 +1,8 @@
 {
   "players": [
     {
-      "id": "5d7e4fcd-5de8-4064-9980-03de6707111c",
-      "score": 10
+      "score": 6,
+      "id": "5d7e4fcd-5de8-4064-9980-03de6707111c"
     },
     {
       "id": "d4e4f085-0dee-4325-b430-050590e5ffc5",
@@ -25,11 +25,11 @@
       "score": 0
     },
     {
-      "score": 5,
+      "score": 11,
       "id": "d7023a8c-ecdd-4dd3-8ee1-17df732ffd72"
     },
     {
-      "score": 3,
+      "score": 5,
       "id": "5ba3b079-607b-437b-87d7-db705cf8b568"
     }
   ]

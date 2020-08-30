@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { PlayerService } from '../services/player.service';
 import { GameService } from '../services/game.service';
+import { Player } from '../models/player';
 
 @Component({
   selector: 'app-game',
@@ -10,18 +11,22 @@ import { GameService } from '../services/game.service';
 })
 export class GameComponent implements OnInit {
   public tiles = this.gameService.tiles;
+  public players: {
+    player1?: Player,
+    player2?: Player
+  } = {};
 
   public valueEmittedFromChildComponent = '';
 
   public constructor(private playerService: PlayerService, private gameService: GameService) { }
 
   ngOnInit(): void {
-    this.playerService.setUpGame();
-  }
+    this.gameService.setUpPlayers();
 
-  getPlayers(): void {
-    this.playerService.getPlayers()
-      .subscribe(players => console.log(players));
+    this.playerService.player1.subscribe(player => this.players.player1 = player);
+    this.playerService.player2.subscribe(player => this.players.player2 = player);
+
+    this.playerService.setUpGame();
   }
 
   parentEventHandlerFunction(valueEmitted: number): void{
