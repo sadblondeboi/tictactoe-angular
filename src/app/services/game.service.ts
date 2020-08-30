@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { Game } from '../models/game';
+import { Player } from '../models/player';
+
+import { PlayerService } from './player.service';
 
 export enum GameState {
   None = 'None',
@@ -13,7 +16,7 @@ export enum GameState {
   providedIn: 'root'
 })
 export class GameService {
-  public activePlayer: GameState;
+  public activePlayer: GameState = GameState.Player1;
   private game: Game = {
     round: 1
   };
@@ -23,7 +26,7 @@ export class GameService {
     [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]
   ];
 
-  public constructor() { }
+  public constructor(private playerService: PlayerService) { }
 
   public changeActivePlayer(): void {
     if (this.activePlayer !== GameState.None) {
@@ -33,6 +36,11 @@ export class GameService {
 
   public getActivePlayer(): GameState {
     return this.activePlayer;
+  }
+
+  public getActiveModel(): Player {
+    const player = this.activePlayer === GameState.Player1 ? this.playerService.player1 : this.playerService.player2;
+    return player;
   }
 
   public setActivePlayer(player: GameState): void {
@@ -62,6 +70,7 @@ export class GameService {
     // this.activePlayer.score += 1;
     this.game.round += 1;
     console.log(this.game.round);
+    this.playerService.setPlayerScore(this.getActivePlayer(), this.getActiveModel().score);
     this.tiles.fill(GameState.None);
   }
 
@@ -72,6 +81,9 @@ export class GameService {
         win += +(tiles[z] === player);
       }
       if (win === 3) {
+        console.log(this.getActiveModel());
+        this.getActiveModel().score += 1;
+        console.log(this.getActiveModel());
         return true;
       }
     }

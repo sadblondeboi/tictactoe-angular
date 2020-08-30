@@ -16,9 +16,7 @@ export class GameComponent implements OnInit {
   public constructor(private playerService: PlayerService, private gameService: GameService) { }
 
   ngOnInit(): void {
-    this.playerService.getPlayersIDs();
-    console.log(this.getPlayers());
-    this.gameService.changeActivePlayer();
+    this.playerService.setUpGame();
   }
 
   getPlayers(): void {

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs';
 
-import { v4 as uuidv4 } from 'uuid';
 
 import { Player } from '../models/player';
+import { GameState } from './game.service';
 
 @Injectable({
     providedIn: 'root'
@@ -25,13 +25,19 @@ export class PlayerService {
 
     private createPlayer(playerName: string): string {
         const player: Player = {
-            id: uuidv4(),
-            score: 0
+                id: '5d7e4fcd-5de8-4064-9980-03de6707111c',
+                score: 0
         };
         localStorage.setItem(playerName, player.id);
         this.http.post<Player>(this.playersUrl, player, {headers: {'Content-Type': 'application/json'}}).subscribe();
         return player.id;
      }
+
+    public setUpGame(): void {
+        this.getPlayersIDs();
+        this.getPlayerScore(this.player1.id).subscribe(player => this.player1.score = player.score);
+        this.getPlayerScore(this.player2.id).subscribe(player => this.player2.score = player.score);
+    }
 
     public getPlayersIDs(): {player1: string, player2: string} {
         const playersIDs = {
@@ -42,6 +48,9 @@ export class PlayerService {
         playersIDs.player1 = playersIDs.player1 || this.createPlayer('player1');
         playersIDs.player2 = playersIDs.player2 || this.createPlayer('player2');
 
+        this.player1.id = playersIDs.player1;
+        this.player2.id = playersIDs.player2;
+
         return playersIDs;
     }
 
@@ -49,8 +58,13 @@ export class PlayerService {
         return this.http.get<Player[]>(this.playersUrl);
     }
 
-    setupPlayers(players: Player[]): void {
-        this.player1 = players[0];
-        this.player2 = players[1];
+    public setPlayerScore(player: GameState, score: number): void {
+        // tslint:disable-next-line: max-line-length
+        const playerId = player === GameState.Player1 ? this.player1.id : this.player2.id;
+        this.http.put<Player>(`${this.playersUrl}/${playerId}`, {score}, {headers: {'Content-Type': 'application/json'}}).subscribe();
+    }
+
+    public getPlayerScore(id: string): Observable<Player> {
+        return this.http.get<Player>(`${this.playersUrl}/${id}`);
     }
 }

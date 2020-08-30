@@ -8,6 +8,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { GameComponent } from './game/game.component';
 import { BoardComponent } from './board/board.component';
 import { StatsComponent } from './stats/stats.component';
+import { PlayerService } from './services/player.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { StatsComponent } from './stats/stats.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
