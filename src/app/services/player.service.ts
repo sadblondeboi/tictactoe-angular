@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { v4 } from  'uuid';
 
 import { Player } from '../models/player';
 import { GameState } from './game.service';
@@ -22,7 +23,7 @@ export class PlayerService {
 
     private createPlayer(playerName: 'player1' | 'player2'): Player {
         const player: Player = {
-            id: '5d7e4fcd-5de8-4064-9980-03de6707111c',
+            id: v4(),
             score: 0
         };
         localStorage.setItem(playerName, player.id);
