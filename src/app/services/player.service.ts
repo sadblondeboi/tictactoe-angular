@@ -12,7 +12,7 @@ import { GameState } from './game.service';
 })
 
 export class PlayerService {
-    private playersUrl = 'http://localhost:3000/players';
+    private playersUrl = 'http://109.173.167.138:3002/players';
 
     public player1 = new Subject<Player>();
     public player2 = new Subject<Player>();
