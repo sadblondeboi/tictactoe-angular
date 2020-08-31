@@ -72,7 +72,6 @@ export class GameService {
       this.nextRound();
     }
     this.changeActivePlayer();
-
   }
 
   private nextRound(): void {

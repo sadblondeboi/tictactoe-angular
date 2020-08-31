@@ -1,3 +1,4 @@
-<p>game works!</p>
-<app-board [tiles]="tiles" (buttonClicked)="parentEventHandlerFunction($event)"></app-board>
-<app-stats *ngIf="players.player1 && players.player2" [players]="players"></app-stats>
+<div class="game">
+    <app-board [tiles]="tiles" (buttonClicked)="parentEventHandlerFunction($event)"></app-board>
+    <app-stats *ngIf="players.player1 && players.player2" [players]="players"></app-stats>
+</div>

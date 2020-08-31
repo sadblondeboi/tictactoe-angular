@@ -3,7 +3,6 @@ import { HttpClient, } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-
 import { Player } from '../models/player';
 import { GameState } from './game.service';
 

@@ -1,5 +1,8 @@
 <div class="board">
-    <div class="tile" 
+    <div class="tile"
+    [ngClass]="{
+    
+    }"
     *ngFor="let tile of tiles; index as i"
     (click)="clickButton(i)">
         {{tile}}

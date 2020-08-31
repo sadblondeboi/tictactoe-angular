@@ -1,0 +1,24 @@
+.welcome {
+    min-height: 100vh;
+    &__info {
+       font-size: 1.125rem;
+       text-align: center;
+       margin: 1.5rem;
+    }
+
+    &__link {
+        margin: auto;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        width: 15%;
+        background-color: #f5b5b5;
+        color: black;
+        border-radius: 2px;
+    }
+
+    &__link:hover {
+        color: white;
+    }
+}
