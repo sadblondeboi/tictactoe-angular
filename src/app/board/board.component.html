@@ -1,10 +1,10 @@
 <div class="board">
-    <div class="tile"
-    [ngClass]="{
-    
-    }"
+  <div
+    class="board__tile"
     *ngFor="let tile of tiles; index as i"
-    (click)="clickButton(i)">
-        {{tile}}
-    </div>
+    (click)="clickButton(i)"
+    [class.board__tile--player2]="tile === 'Player2'"
+  >
+    {{ (tile === "Player1" && "P1") || (tile === "Player2" && "P2") || "" }}
+  </div>
 </div>

@@ -1,16 +1,16 @@
 <div class="stats">
-    <table class="stats__table">
-        <tr>
-            <th></th>
-            <th>Score</th>
-        </tr>
-        <tr>
-            <th>Player1</th>
-            <th>{{players.player1.score}}</th>
-        </tr>
-        <tr>
-            <th>Player2</th>
-            <th>{{players.player2.score}}</th>
-        </tr>
-    </table>
+  <table class="stats__table">
+    <tr>
+      <th>Player</th>
+      <th>Score</th>
+    </tr>
+    <tr [class.stats__table--active]="playerActiveId === 'Player1'">
+      <th>Player 1</th>
+      <th>{{ players.player1.score }}</th>
+    </tr>
+    <tr [class.stats__table--active]="playerActiveId === 'Player2'">
+      <th>Player 2</th>
+      <th>{{ players.player2.score }}</th>
+    </tr>
+  </table>
 </div>

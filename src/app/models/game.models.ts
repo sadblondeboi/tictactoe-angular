@@ -1,3 +1,3 @@
 export interface Game {
-    round: number;
+  round: number;
 }

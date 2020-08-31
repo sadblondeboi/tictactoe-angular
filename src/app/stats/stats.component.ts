@@ -1,18 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { Player } from '../models/player';
+import { Player } from '../models/player.models';
+import { GameService, GameState } from '../services/game.service';
 
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.scss'],
 })
-export class StatsComponent {
+export class StatsComponent implements OnInit {
   @Input()
   public players: {
     player1: Player;
     player2: Player;
   };
 
-  constructor() {}
+  public playerActiveId = GameState.Player1;
+
+  public constructor(private gameService: GameService) {}
+
+  public ngOnInit() {
+    this.gameService.activePlayerId.subscribe(
+      (id) => (this.playerActiveId = id)
+    );
+  }
 }

@@ -16,14 +16,10 @@ import { PlayerService } from './services/player.service';
     WelcomeComponent,
     GameComponent,
     BoardComponent,
-    StatsComponent
+    StatsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [PlayerService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

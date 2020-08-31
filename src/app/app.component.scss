@@ -1,17 +1,16 @@
-
 .app {
-    font-family: 'Roboto', sans-serif;
+  $this: &;
+  font-family: "Roboto", sans-serif;
 
-    &__header {
-        width: 100%;
-        background-color: #f5b5b5;
-        text-align: center;
-    }
+  &__header {
+    width: 100%;
+    background-color: #f5b5b5;
+    text-align: center;
 
-    &__title {
-        font-weight: 400;
-        padding: .5rem;
-        letter-spacing: .125rem;
+    #{$this}__title {
+      font-weight: 900;
+      padding: 0.5rem;
+      text-transform: uppercase;
     }
+  }
 }
-
