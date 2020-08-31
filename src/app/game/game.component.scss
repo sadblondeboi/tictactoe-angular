@@ -1,5 +1,6 @@
 .game {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    min-width: 400px;
+    max-width: calc(33% - 2 * 1rem);
     padding: 1rem;
+    margin: auto;
 }

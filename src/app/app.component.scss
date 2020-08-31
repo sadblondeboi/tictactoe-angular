@@ -1,15 +1,11 @@
 
 .app {
     font-family: 'Roboto', sans-serif;
-    width: 100vw;
-    min-height: 100vh;
-    
+
     &__header {
-        display: flex;
-        flex-direction: row;
         width: 100%;
-        align-content: center;
         background-color: #f5b5b5;
+        text-align: center;
     }
 
     &__title {
