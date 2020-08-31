@@ -1,27 +1,10 @@
 # Tictactoe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
+You can see this project here: http://109.173.167.138:3003/
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+My first app in Angular, made basically in two days. Maybe it doesn't look the best but I'm pretty proud of the functionalities (I didn't have that much time to finish it).
+It uses JSON Server as a REST API and saves player objects with scores in local storage as well as in the DB. After refreshing the page you don't lose your score unless you delete data stored in browser. 
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+For services I used RXJS, so I could pass the data to child components and render it in a clear way in the browser. I also used router for navigation and I used SCSS. 
